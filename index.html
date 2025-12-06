@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gym Fitness - Glassmorphism</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-bg: #F0EAD6;
+      --accent-gold: #C5B368;
+      --glass-bg: rgba(255, 255, 255, 0.25);
+      --glass-border: rgba(255, 255, 255, 0.5);
+      --text-dark: #1a1a1a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Satoshi', sans-serif;
+      background-color: var(--primary-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: -1;
+      opacity: 0.6;
+      animation: floatOrb 10s infinite ease-in-out alternate;
+    }
+
+    .orb-1 {
+      top: 10%;
+      left: -10%;
+      width: 400px;
+      height: 400px;
+      background: #ff9a9e;
+    }
+
+    .orb-2 {
+      top: 40%;
+      right: -5%;
+      width: 300px;
+      height: 300px;
+      background: #a18cd1;
+      animation-delay: 2s;
+    }
+
+    .orb-3 {
+      bottom: 10%;
+      left: 20%;
+      width: 350px;
+      height: 350px;
+      background: #fbc2eb;
+      animation-delay: 4s;
+    }
+
+    @keyframes floatOrb {
+      0% {
+        transform: translate(0, 0);
+      }
+
+      100% {
+        transform: translate(30px, 50px);
+      }
+    }
+
+    .glass-panel {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-up {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    .delay-1 {
+      animation-delay: 0.2s;
+    }
+
+    .delay-2 {
+      animation-delay: 0.4s;
+    }
+
+    .delay-3 {
+      animation-delay: 0.6s;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      background-image: url('https://media.istockphoto.com/id/1704014875/video/modern-gym-interior-with-boxing-bag-workout-and-training-equipments.jpg?s=640x640&k=20&c=aDGQh5tQC48LnT2rBJ8MnFTqeoSbTkaYokJDHq6b6bE=');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      border-bottom-left-radius: 50px;
+      border-bottom-right-radius: 50px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2));
+    }
+
+    /* Navbar */
+    .navbar {
+      position: absolute;
+      top: 40px;
+      width: 90%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 30px;
+      z-index: 10;
+      border-radius: 50px;
+    }
+
+    .logo {
+      filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 60px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      position: relative;
+      transition: color 0.3s;
+      padding-left: 50px;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: var(--accent-gold);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .contact-icon {
+      background: white;
+      color: #333;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .contact-icon:hover {
+      transform: rotate(15deg) scale(1.1);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+
+    .hero h1 {
+      font-size: 50px;
+      font-weight: 1000;
+      line-height: 1.1;
+      margin-top: 100px;
+      margin-bottom: 100px;
+      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .btn-start {
+      background: rgba(255, 255, 255, 0.9);
+      color: #333;
+      padding: 18px 45px;
+      border: none;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-start:hover {
+      transform: translateY(-3px);
+      background-color: var(--accent-gold);
+      color: white;
+      box-shadow: 0 10px 20px rgba(197, 179, 104, 0.5);
+    }
+
+    .btn-start:active {
+      background-color: var(--accent-gold);
+      transform: translateY(-1px);
+      filter: brightness(0.95);
+      box-shadow: 0 5px 10px rgba(197, 179, 104, 0.4);
+    }
+
+    .intro-text {
+      text-align: center;
+      padding: 80px 20px 70px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      font-size: 23px;
+    }
+
+    .intro-text p {
+      font-size: 1.3rem;
+      line-height: 1.8;
+      font-weight: 500;
+    }
+
+    .top-gallery {
+      overflow: hidden;
+      padding: 0 0 60px 0;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 30px;
+      width: max-content;
+      animation: scrollGallery 20s linear infinite;
+    }
+
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes scrollGallery {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .gallery-wrapper {
+      width: 300px;
+      height: 250px;
+      flex-shrink: 0;
+      overflow: hidden;
+      border-radius: 40px;
+      border: 4px solid var(--accent-gold);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .gallery-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-wrapper:hover .gallery-img {
+      transform: scale(1.1);
+    }
+
+    .video-section {
+      max-width: 900px;
+      margin: 0 auto 80px auto;
+      padding: 0 20px;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 40px;
+      border: 4px solid var(--accent-gold);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+      background: #000;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+
+    .exercises-section {
+      padding-bottom: 50px;
+      position: relative;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 60px;
+      color: #333;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .exercise-card {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 50px;
+      max-width: 950px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 20px;
+      border-radius: 40px;
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .exercise-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    .card-image {
+      flex: 0 0 380px;
+      overflow: hidden;
+      border-radius: 30px;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 30px;
+      border: 4px solid var(--accent-gold);
+      display: block;
+      transition: transform 0.5s;
+    }
+
+    .exercise-card:hover .card-image img {
+      transform: scale(1.05);
+    }
+
+    .card-content {
+      flex: 1;
+      padding-right: 20px;
+    }
+
+    .card-content h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: #111;
+    }
+
+    .card-content p {
+      margin-bottom: 25px;
+      color: #444;
+      font-size: 1.05rem;
+    }
+
+    .tags {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      background: var(--accent-gold);
+      padding: 8px 25px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s, background 0.2s;
+      cursor: default;
+    }
+
+    .tag:hover {
+      transform: scale(1.1);
+      background: #d4c06b;
+    }
+
+    .info-section {
+      padding-bottom: 20px;
+      color: rgba(0, 0, 0, 0.6);
+      font-weight: 300;
+    }
+
+    .grid-wrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 30px;
+      padding: 30px;
+      transition: transform 0.3s ease, background 0.3s;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .glass-card h3 {
+      font-size: 1.5rem;
+      color: #1a1a1a;
+      margin-bottom: 15px;
+      border-bottom: 2px solid var(--accent-gold);
+      display: inline-block;
+      padding-bottom: 5px;
+      align-self: flex-start;
+    }
+
+    .glass-card p {
+      color: #444;
+      font-size: 1.05rem;
+    }
+
+    .glass-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .glass-card li {
+      margin-bottom: 10px;
+      font-weight: 500;
+      font-size: 1.1rem;
+      color: #222;
+    }
+
+    .glass-card li span {
+      font-weight: 400;
+      display: block;
+      font-size: 0.95rem;
+      color: #555;
+      margin-top: 3px;
+    }
+
+    .glass-card h4 {
+      margin: 20px 0 10px 0;
+      font-size: 1.2rem;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .card-inner-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      border: 2px solid var(--accent-gold);
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        position: relative;
+        width: 95%;
+        margin: 20px auto 0 auto;
+      }
+
+      .hero {
+        height: auto;
+        padding-bottom: 50px;
+      }
+
+      .hero-content {
+        padding-top: 50px;
+      }
+
+      .exercise-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+      }
+
+      .card-image {
+        flex: none;
+        width: 100%;
+      }
+
+      .tags {
+        justify-content: center;
+      }
+
+      .card-content {
+        padding-right: 0;
+        margin-top: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <header class="hero">
+    <nav class="navbar glass-panel animate-up">
+      <div class="logo">
+        <img src="logo1.png" alt="Gym Fitness Logo">
+      </div>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Types</a>
+        <a href="#">Phases</a>
+        <a href="#">Principle</a>
+      </div>
+      <div class="contact-icon shadow">☏</div>
+    </nav>
+
+    <div class="hero-content">
+      <h1 class="animate-up delay-1">Reach Your Limit And Get To The Next Level</h1>
+      <button class="btn-start animate-up delay-2">Get Started</button>
+    </div>
+  </header>
+
+  <section class="intro-text animate-up delay-3">
+    <p>
+      <strong>Exercise</strong> is defined as any bodily activity that enhances or maintains physical fitness,
+      overall health, and
+      wellness. It is performed to aid growth, improve strength, prevent aging, develop muscles and the
+      cardiovascular system, hone athletic skills, lose weight, and providing enjoyment. Regular exercise reduces
+      the risk of chronic diseases, improves respiration, and enhances blood circulation.
+    </p>
+  </section>
+
+  <section class="top-gallery animate-up delay-3">
+    <div class="marquee-track">
+
+      <div class="gallery-wrapper">
+        <img src="https://i.pinimg.com/736x/8a/39/60/8a3960fcf56ba95b3d21222309e542d4.jpg" class="gallery-img">
+      </div>
+      <div class="gallery-wrapper">
+        <img src="https://i.pinimg.com/736x/cd/d5/0b/cdd50b72104d8b5326f6067bc68809a1.jpg" class="gallery-img">
+      </div>
+      <div class="gallery-wrapper">
+        <img src="https://i.pinimg.com/736x/a2/60/7d/a2607d282654b9f8bece15b55818b014.jpg" class="gallery-img">
+      </div>
+      <div class="gallery-wrapper">
+        <img src="https://i.pinimg.com/1200x/ce/0f/4c/ce0f4ccf3ab691ac2cc32b2ccf8cf84b.jpg" class="gallery-img">
+      </div>
+      <div class="gallery-wrapper">
+        <img src="https://i.pinimg.com/736x/04/1d/cb/041dcb34cb2b48939b9bda855d399237.jpg" class="gallery-img">
+      </div>
+      <div class="gallery-wrapper">
+        <img src="https://i.pinimg.com/736x/5a/e8/8e/5ae88ed493505ecc7c064ab507de1ac4.jpg" class="gallery-img">
+      </div>
+
+      <div class="gallery-wrapper">
+        <img src="https://i.pinimg.com/736x/66/ae/57/66ae57a334e76789d8b591726caace5b.jpg" class="gallery-img">
+      </div>
+      <div class="gallery-wrapper">
+        <img src="https://i.pinimg.com/1200x/f5/51/48/f55148ad2ef92de8597008b60bcd29a8.jpg" class="gallery-img">
+      </div>
+      <div class="gallery-wrapper">
+        <img src="https://i.pinimg.com/736x/1f/75/73/1f7573b1159586bdec4fd2015d773d29.jpg" class="gallery-img">
+      </div>
+      <div class="gallery-wrapper">
+        <img src="https://i.pinimg.com/736x/a2/e5/d8/a2e5d84794de44c10993715d671c6bd8.jpg" class="gallery-img">
+      </div>
+      <div class="gallery-wrapper">
+        <img src="https://i.pinimg.com/736x/de/0f/2a/de0f2a1a19a00478afd4eb2e8f2edb1d.jpg" class="gallery-img">
+      </div>
+      <div class="gallery-wrapper">
+        <img src="https://i.pinimg.com/1200x/74/6c/fb/746cfbf4d087c7be9dc331a45625f596.jpg" class="gallery-img">
+      </div>
+
+    </div>
+  </section>
+
+  <section class="video-section animate-up delay-3">
+    <div class="video-wrapper">
+      <iframe src="exercise_video.mp4" title="Simple Exercise" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section class="container exercises-section">
+    <h2 class="section-title animate-up">Types of Physical Exercises</h2>
+
+    <div class="exercise-card animate-up">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=600" alt="Aerobic Exercise">
+      </div>
+      <div class="card-content">
+        <h3>Aerobic Exercise</h3>
+        <p>Uses large muscle groups and increases oxygen consumption to improve cardiovascular endurance.</p>
+        <div class="tags">
+          <span class="tag">Running</span>
+          <span class="tag">Swimming</span>
+          <span class="tag">Cycling</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise-card animate-up">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600" alt="Anaerobic Exercise">
+      </div>
+      <div class="card-content">
+        <h3>Anaerobic Exercise</h3>
+        <p>Includes strength and resistance training to build muscle mass, bone density, and balance.</p>
+        <div class="tags">
+          <span class="tag">WT</span>
+          <span class="tag">Sprinting</span>
+          <span class="tag">HIIT</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise-card animate-up">
+      <div class="card-image">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyvHurFKBILpmmjznMD8iSGplfAkJdCJuD5g&s"
+          alt="Anaerobic Exercise">
+      </div>
+      <div class="card-content">
+        <h3>Flexibility Exercise</h3>
+        <p>Stretches and lengthens muscles to improve range of motion and reduce injury risk.</p>
+        <div class="tags">
+          <span class="tag">Leg Stretches</span>
+          <span class="tag">Split</span>
+          <span class="tag">Arm Stretch</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container info-section">
+    <h2 class="section-title animate-up">Phases of a Fitness Program</h2>
+    <div class="grid-wrapper">
+      <div class="glass-card animate-up">
+        <h3>Warm-up</h3>
+        <p>The initial phase (5-10 minutes) elevates body temperature and prepares muscles to prevent cramps and
+          injuries. It leads to increased flexibility, blood flow, and improved performance.</p>
+      </div>
+      <div class="glass-card animate-up">
+        <h3>Exercise Proper</h3>
+        <p>The phase where the individual performs the specific program to meet training objectives. This is the main
+          part of the workout focusing on your goals.</p>
+      </div>
+      <div class="glass-card animate-up">
+        <h3>Cool Down</h3>
+        <p>Gradual tapering off to prevent dizziness and blood pooling by keeping blood circulating for recovery. Helps
+          return heart rate to normal levels.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container info-section">
+    <h2 class="section-title animate-up">Principles of Training</h2>
+    <div class="grid-wrapper">
+      <div class="glass-card animate-up">
+        <h3>Specificity</h3>
+        <p>Exercises must duplicate the movements and energy systems of the desired activity.</p>
+      </div>
+      <div class="glass-card animate-up">
+        <h3>Overload</h3>
+        <p>The body must be exercised beyond its accustomed level to adapt and grow stronger.</p>
+      </div>
+      <div class="glass-card animate-up">
+        <h3>Progression</h3>
+        <p>Intensity must increase gradually over time to avoid injury while ensuring improvement.</p>
+      </div>
+      <div class="glass-card animate-up">
+        <h3>Reversibility</h3>
+        <p>Fitness is lost if exercise stops. "Use it or lose it."</p>
+      </div>
+      <div class="glass-card animate-up">
+        <h3>Tedium</h3>
+        <p>Variations should be introduced to avoid boredom and prevent plateaus in progress.</p>
+      </div>
+      <div class="glass-card animate-up">
+        <h3>Individualization</h3>
+        <p>Programs must cater to unique individual needs, goals, and physiological differences.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container info-section">
+    <h2 class="section-title animate-up">The F.I.T.T. Formula</h2>
+    <div class="grid-wrapper">
+      <div class="glass-card animate-up">
+        <h3>Frequency</h3>
+        <p>How often one exercises (e.g., 3-5 times a week).</p>
+      </div>
+      <div class="glass-card animate-up">
+        <h3>Intensity</h3>
+        <p>How hard the activity is (e.g., weight lifted, heart rate).</p>
+      </div>
+      <div class="glass-card animate-up">
+        <h3>Time</h3>
+        <p>How long the activity lasts (e.g., 15-30 minutes).</p>
+      </div>
+      <div class="glass-card animate-up">
+        <h3>Type</h3>
+        <p>The specific kind of activity chosen (e.g., Cardio, Strength).</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container info-section">
+    <h2 class="section-title animate-up">Basic Movement Patterns</h2>
+    <div class="glass-card animate-up" style="text-align: center;">
+      <h3 style="border:none; margin-bottom:20px;">Fundamental Movements</h3>
+      <p style="max-width: 800px; margin: 0 auto; font-size: 1.2rem;">
+        Sports and exercises are often based on these fundamental movements:
+      </p>
+      <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 25px;">
+        <span class="tag">Squat</span>
+        <span class="tag">Lunge</span>
+        <span class="tag">Push</span>
+        <span class="tag">Pull</span>
+        <span class="tag">Twist</span>
+        <span class="tag">Bend</span>
+        <span class="tag">Gait (Walking/Running)</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="container info-section">
+    <h2 class="section-title animate-up">List of Exercises by Category</h2>
+
+    <div class="grid-wrapper">
+
+      <div class="glass-card animate-up">
+        <h3>1. General Exercise Categories</h3>
+        <ul>
+          <li><strong>Aerobic Examples:</strong><br><span>Running, cycling, swimming, brisk walking, skipping rope,
+              rowing, hiking, dancing, tennis.</span></li>
+          <li style="margin-top:15px;"><strong>Anaerobic/Strength Examples:</strong><br><span>Push-ups, pull-ups,
+              lunges, squats, bench presses, sprinting, weight training.</span></li>
+        </ul>
+      </div>
+
+      <div class="glass-card animate-up">
+        <h3>2. Calisthenics</h3>
+        <img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=500" alt="Body Weight Exercises"
+          class="card-inner-img">
+        <ul>
+          <li><strong>Abdominal Curl:</strong> <span>Develops Rectus Abdominus.</span></li>
+          <li><strong>Push up:</strong> <span>Develops Triceps and Pectorals.</span></li>
+          <li><strong>Heel Raise:</strong> <span>Develops Gastrocnemius and Soleus.</span></li>
+          <li><strong>Abdominal Twist:</strong> <span>Develops Internal and External Oblique muscles.</span></li>
+          <li><strong>Chin up:</strong> <span>Develops Biceps, Latissimus dorsi, and Teres major.</span></li>
+          <li><strong>Chest up Maximus:</strong> <span>Develops Latissimus dorsi and Gluteal hamstrings.</span></li>
+          <li><strong>Half squats:</strong> <span>Develops Quadriceps.</span></li>
+        </ul>
+      </div>
+
+      <div class="glass-card animate-up">
+        <h3>3. Back Pain Prevention & Strengthening</h3>
+        <ul>
+          <li><strong>Wall Slide:</strong> <span>Strengthens back, hip, and leg muscles.</span></li>
+          <li><strong>Prone Leg Raises:</strong> <span>Strengthens back and hip muscles (lying on stomach).</span></li>
+          <li><strong>Supine/Seated Leg Raises:</strong> <span>Strengthens stomach and hip muscles (lying on back or
+              sitting).</span></li>
+          <li><strong>Partial Sit-up:</strong> <span>Strengthens stomach muscles.</span></li>
+          <li><strong>Back Leg Swing:</strong> <span>Strengthens hip and back muscles (standing behind a chair).</span>
+          </li>
+          <li><strong>Knee to Chest:</strong> <span>Decreases strain on the back.</span></li>
+          <li><strong>Standing Back Bend:</strong> <span>Decreases strain on the back.</span></li>
+        </ul>
+      </div>
+
+      <div class="glass-card animate-up">
+        <h3>4. Conditioning & Warm-Up</h3>
+        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=500" alt="Warm up Exercises"
+          class="card-inner-img">
+
+        <h4>Arms and Shoulder</h4>
+        <ul>
+          <li>Arms Stretch, Arm Circling, Arm Push-Up, Arms Swing.</li>
+        </ul>
+
+        <h4>Hips, Legs, and Feet</h4>
+        <ul>
+          <li>Half/Full Knee Bend, Leg Raising, Frog/Tailor Sit, Kneeling Arch Back, Supine/Side Leg Raise, Hurdle Sit.
+          </li>
+        </ul>
+
+        <h4>Trunk and Abdominal</h4>
+        <ul>
+          <li>Lateral Bends, Bend Trunk Backward, Abdominal Curl, Prone Lying Arches/Lifts, Shoulder Stand.</li>
+        </ul>
+
+        <h4>Neck Exercises</h4>
+        <ul>
+          <li>Head Bend (forward/sideward/backward), Head Twist, Head Rotation.</li>
+        </ul>
+      </div>
+
+      <div class="glass-card animate-up">
+        <h3>5. Conditioning Routines</h3>
+
+        <h4>For Beginners</h4>
+        <ul>
+          <li>Chest Stretches, Trunk Twist/Bends, Knee Bend, Hamstrings Stretches, Hops and Jumps, Arm Swings.</li>
+          <li><em>Cooling Off:</em> Swing arms upward, rise on toes.</li>
+        </ul>
+
+        <h4>Intermediate Level</h4>
+        <ul>
+          <li>Body Twist, Trunk Bend, Lunge, Abdominal Curl, Leg Raise, Swan, Dog Stand Leg Raise, Running in place.
+          </li>
+          <li><em>Relaxation:</em> Stride sideward bends and arm raises.</li>
+        </ul>
+      </div>
+
+      <div class="glass-card animate-up">
+        <h3>6. Flexibility & Strength Tests</h3>
+        <img src="https://images.unsplash.com/photo-1544367563-12123d8965cd?q=80&w=500" alt="Stretching Exercises"
+          class="card-inner-img">
+        <ul>
+          <li><strong>Hip Flexor Stretch:</strong> <span>Lying on back, knee to chest OR Lunge position.</span></li>
+          <li><strong>Hamstring Stretch:</strong> <span>Lying on back leg lift OR Standing slide foot front.</span></li>
+          <li><strong>Quadriceps Stretch:</strong> <span>Lying on stomach OR Standing heel to buttocks.</span></li>
+          <li><strong>Calf Stretch:</strong> <span>Standing on platform edge OR Lunge against a wall.</span></li>
+          <li><strong>Abdominal Strength Test:</strong> <span>Supine curl-up holding for 10 counts.</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+
+</html>
