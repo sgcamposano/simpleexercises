@@ -457,10 +457,13 @@
 
     .grid-wrapper {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      /* BAGUHIN ITO: Gawing 3 columns para gayahin ang layout sa image */
+      grid-template-columns: repeat(2, 1fr);
       gap: 30px;
       margin-bottom: 50px;
+      /* Pinapanatili ang pantay na taas ng cards */
     }
+
 
     .glass-card {
       background: rgba(255, 255, 255, 0.4);
@@ -481,7 +484,7 @@
     }
 
     .glass-card h3 {
-      font-size: 1.5rem;
+      font-size: 1.1rem;
       color: #1a1a1a;
       margin-bottom: 15px;
       border-bottom: 2px solid var(--accent-gold);
@@ -502,13 +505,13 @@
 
     .glass-card li {
       margin-bottom: 10px;
-      font-weight: 500;
+      font-weight: 200;
       font-size: 1.1rem;
       color: #222;
     }
 
     .glass-card li span {
-      font-weight: 400;
+      font-weight: 200;
       display: block;
       font-size: 0.95rem;
       color: #555;
@@ -517,9 +520,8 @@
 
     .glass-card h4 {
       margin: 20px 0 10px 0;
-      font-size: 1.2rem;
-      color: var(--accent-gold);
-      text-transform: uppercase;
+      font-size: 1.1rem;
+      color: black;
       letter-spacing: 1px;
     }
 
@@ -532,7 +534,18 @@
       border: 2px solid var(--accent-gold);
     }
 
+    @media (max-width: 1024px) {
+      .grid-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     @media (max-width: 768px) {
+      .grid-wrapper {
+        grid-template-columns: 1fr;
+        /* 1 column lang pag cellphone para hindi siksikan */
+      }
+
       .navbar {
         flex-direction: column;
         gap: 15px;
@@ -586,10 +599,11 @@
         <img src="logo1.png" alt="Gym Fitness Logo">
       </div>
       <div class="nav-links">
-        <a href="#">Home</a>
-        <a href="#">Types</a>
-        <a href="#">Phases</a>
-        <a href="#">Principle</a>
+        <a href="#home">Home</a>
+        <a href="#types">Types</a>
+        <a href="#phases">Phases</a>
+        <a href="#principles">Principle</a>
+        <a href="#list">List of Exercises</a>
       </div>
       <div class="contact-icon shadow">☏</div>
     </nav>
@@ -600,7 +614,7 @@
     </div>
   </header>
 
-  <section class="intro-text animate-up delay-3">
+  <section id="home" class="intro-text animate-up delay-3">
     <p>
       <strong>Exercise</strong> is defined as any bodily activity that enhances or maintains physical fitness,
       overall health, and
@@ -662,7 +676,7 @@
     </div>
   </section>
 
-  <section class="container exercises-section">
+  <section id="types" class="container exercises-section">
     <h2 class="section-title animate-up">Types of Physical Exercises</h2>
 
     <div class="exercise-card animate-up">
@@ -712,7 +726,7 @@
     </div>
   </section>
 
-  <section class="container info-section">
+  <section id="phases" class="container info-section">
     <h2 class="section-title animate-up">Phases of a Fitness Program</h2>
     <div class="grid-wrapper">
       <div class="glass-card animate-up">
@@ -733,7 +747,7 @@
     </div>
   </section>
 
-  <section class="container info-section">
+  <section id="principles" class="container info-section">
     <h2 class="section-title animate-up">Principles of Training</h2>
     <div class="grid-wrapper">
       <div class="glass-card animate-up">
@@ -804,106 +818,148 @@
     </div>
   </section>
 
-  <section class="container info-section">
+  <section id="list" class="container info-section">
     <h2 class="section-title animate-up">List of Exercises by Category</h2>
 
     <div class="grid-wrapper">
 
       <div class="glass-card animate-up">
-        <h3>1. General Exercise Categories</h3>
+        <h3>General Exercise Categories</h3>
         <ul>
-          <li><strong>Aerobic Examples:</strong><br><span>Running, cycling, swimming, brisk walking, skipping rope,
-              rowing, hiking, dancing, tennis.</span></li>
-          <li style="margin-top:15px;"><strong>Anaerobic/Strength Examples:</strong><br><span>Push-ups, pull-ups,
-              lunges, squats, bench presses, sprinting, weight training.</span></li>
+          <li><strong>Aerobic Examples:</strong></li>
+          <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 25px;">
+            <span class="tag">Running</span>
+            <span class="tag">Cycling</span>
+            <span class="tag">Swimming</span>
+            <span class="tag">Brisk Walking</span>
+            <span class="tag">Skipping Rope</span>
+            <span class="tag">Rowing</span>
+            <span class="tag">Hiking</span>
+            <span class="tag">Dancing</span>
+            <span class="tag">Tennis</span>
+          </div>
+          <li style="margin-top:15px;"><strong>Anaerobic/Strength Examples:</strong></li>
+          <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 25px;">
+            <span class="tag">Push-Ups</span>
+            <span class="tag">Pull-Ups</span>
+            <span class="tag">Lunges</span>
+            <span class="tag">Squats</span>
+            <span class="tag">Bench Presses</span>
+            <span class="tag">Sprinting</span>
+            <span class="tag">Weight Training</span>
+          </div>
         </ul>
       </div>
 
       <div class="glass-card animate-up">
-        <h3>2. Calisthenics</h3>
-        <img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=500" alt="Body Weight Exercises"
-          class="card-inner-img">
+        <h3>Conditioning Routines</h3>
         <ul>
-          <li><strong>Abdominal Curl:</strong> <span>Develops Rectus Abdominus.</span></li>
-          <li><strong>Push up:</strong> <span>Develops Triceps and Pectorals.</span></li>
-          <li><strong>Heel Raise:</strong> <span>Develops Gastrocnemius and Soleus.</span></li>
-          <li><strong>Abdominal Twist:</strong> <span>Develops Internal and External Oblique muscles.</span></li>
-          <li><strong>Chin up:</strong> <span>Develops Biceps, Latissimus dorsi, and Teres major.</span></li>
-          <li><strong>Chest up Maximus:</strong> <span>Develops Latissimus dorsi and Gluteal hamstrings.</span></li>
-          <li><strong>Half squats:</strong> <span>Develops Quadriceps.</span></li>
+          <li><strong>For Beginners</strong></li>
+          <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 25px;">
+            <span class="tag">Chest Stretches</span>
+            <span class="tag">Trunk Twist/Bends</span>
+            <span class="tag">Knee Bend</span>
+            <span class="tag">Hamstrings Stretches</span>
+            <span class="tag">Hops and Jumps</span>
+            <span class="tag">Arm Swings</span>
+          </div>
+          <li style="margin-top:15px;"><strong>Intermediate Level</strong></li>
+          <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 25px;">
+            <span class="tag">Push-Ups</span>
+            <span class="tag">Pull-Ups</span>
+            <span class="tag">Lunges</span>
+            <span class="tag">Squats</span>
+            <span class="tag">Bench Presses</span>
+            <span class="tag">Sprinting</span>
+            <span class="tag">Weight Training</span>
+          </div>
         </ul>
       </div>
 
       <div class="glass-card animate-up">
-        <h3>3. Back Pain Prevention & Strengthening</h3>
-        <ul>
-          <li><strong>Wall Slide:</strong> <span>Strengthens back, hip, and leg muscles.</span></li>
-          <li><strong>Prone Leg Raises:</strong> <span>Strengthens back and hip muscles (lying on stomach).</span></li>
-          <li><strong>Supine/Seated Leg Raises:</strong> <span>Strengthens stomach and hip muscles (lying on back or
-              sitting).</span></li>
-          <li><strong>Partial Sit-up:</strong> <span>Strengthens stomach muscles.</span></li>
-          <li><strong>Back Leg Swing:</strong> <span>Strengthens hip and back muscles (standing behind a chair).</span>
-          </li>
-          <li><strong>Knee to Chest:</strong> <span>Decreases strain on the back.</span></li>
-          <li><strong>Standing Back Bend:</strong> <span>Decreases strain on the back.</span></li>
-        </ul>
+        <h3>Back Pain Prevention & Strengthening</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 25px;">
+          <span class="tag">Wall Slide</span>
+          <span class="tag">Prone Leg Raises</span>
+          <span class="tag">Supine/Seated Leg Raises</span>
+          <span class="tag">Partial Sit-up</span>
+          <span class="tag">Back Leg Swing</span>
+          <span class="tag">Knee to Chest</span>
+          <span class="tag">Standing Back Bend</span>
+        </div>
       </div>
 
       <div class="glass-card animate-up">
-        <h3>4. Conditioning & Warm-Up</h3>
-        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=500" alt="Warm up Exercises"
-          class="card-inner-img">
-
-        <h4>Arms and Shoulder</h4>
-        <ul>
-          <li>Arms Stretch, Arm Circling, Arm Push-Up, Arms Swing.</li>
-        </ul>
-
-        <h4>Hips, Legs, and Feet</h4>
-        <ul>
-          <li>Half/Full Knee Bend, Leg Raising, Frog/Tailor Sit, Kneeling Arch Back, Supine/Side Leg Raise, Hurdle Sit.
-          </li>
-        </ul>
-
-        <h4>Trunk and Abdominal</h4>
-        <ul>
-          <li>Lateral Bends, Bend Trunk Backward, Abdominal Curl, Prone Lying Arches/Lifts, Shoulder Stand.</li>
-        </ul>
-
-        <h4>Neck Exercises</h4>
-        <ul>
-          <li>Head Bend (forward/sideward/backward), Head Twist, Head Rotation.</li>
-        </ul>
+        <h3>Calisthenics</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 25px;">
+          <span class="tag">Abdominal Curl</span>
+          <span class="tag">Push up</span>
+          <span class="tag">Heel Raise</span>
+          <span class="tag">Abdominal Twist</span>
+          <span class="tag">Chin up</span>
+          <span class="tag">Chest up Maximus</span>
+          <span class="tag">Half squats</span>
+        </div>
       </div>
 
       <div class="glass-card animate-up">
-        <h3>5. Conditioning Routines</h3>
-
-        <h4>For Beginners</h4>
+        <h3>Flexibility and Strength Tests</h3>
         <ul>
-          <li>Chest Stretches, Trunk Twist/Bends, Knee Bend, Hamstrings Stretches, Hops and Jumps, Arm Swings.</li>
-          <li><em>Cooling Off:</em> Swing arms upward, rise on toes.</li>
-        </ul>
-
-        <h4>Intermediate Level</h4>
-        <ul>
-          <li>Body Twist, Trunk Bend, Lunge, Abdominal Curl, Leg Raise, Swan, Dog Stand Leg Raise, Running in place.
-          </li>
-          <li><em>Relaxation:</em> Stride sideward bends and arm raises.</li>
-        </ul>
+          <li><strong>Hip Flexor Stretch</strong></li>
+          <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 25px;">
+            <span class="tag">Lying on back</span>
+            <span class="tag">Knee to Chest</span>
+            <span class="tag">back heel raised</span>
+          </div>
+          <li style="margin-top:15px;"><strong>Hamstring Stretch</strong></li>
+          <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 25px;">
+            <span class="tag">Lying on back</span>
+            <span class="tag">Lift one leg vertical</span>
+          </div>
+          <li><strong>Quadriceps Stretch</strong></li>
+          <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 25px;">
+            <span class="tag">Lying on stomach</span>
+            <span class="tag">Pull heel to uttocks</span>
+          </div>
+          <li style="margin-top:15px;"><strong>Calf Stretch (Lunge)</strong></li>
+          <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 25px;">
+            <span class="tag">Lunge against a wall or with feet apart</span>
+          </div>
+          <li><strong>Abdominal Strength Test</strong></li>
+          <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 25px;">
+            <span class="tag">Supine curl-up holding for 10 counts</span>
+          </div>
       </div>
 
       <div class="glass-card animate-up">
-        <h3>6. Flexibility & Strength Tests</h3>
-        <img src="https://images.unsplash.com/photo-1544367563-12123d8965cd?q=80&w=500" alt="Stretching Exercises"
-          class="card-inner-img">
+        <h3>Conditioning & Warm-Up</h3>
         <ul>
-          <li><strong>Hip Flexor Stretch:</strong> <span>Lying on back, knee to chest OR Lunge position.</span></li>
-          <li><strong>Hamstring Stretch:</strong> <span>Lying on back leg lift OR Standing slide foot front.</span></li>
-          <li><strong>Quadriceps Stretch:</strong> <span>Lying on stomach OR Standing heel to buttocks.</span></li>
-          <li><strong>Calf Stretch:</strong> <span>Standing on platform edge OR Lunge against a wall.</span></li>
-          <li><strong>Abdominal Strength Test:</strong> <span>Supine curl-up holding for 10 counts.</span></li>
-        </ul>
+          <li><strong>Arms and Shoulder</strong></li>
+          <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 25px;">
+            <span class="tag">Arms Stretch</span>
+            <span class="tag">Arm Circling</span>
+            <span class="tag">Arm Push-Up</span>
+            <span class="tag">Arms Swing</span>
+          </div>
+          <li style="margin-top:15px;"><strong>Hips, Legs, and Feet</strong></li>
+          <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 25px;">
+            <span class="tag">Half/Full Knee Bend</span>
+            <span class="tag">Leg Raising</span>
+            <span class="tag">Frog/Tailor Sit</span>
+            <span class="tag">Hurdle Sit</span>
+          </div>
+          <li><strong>Trunk and Abdominal</strong></li>
+          <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 25px;">
+            <span class="tag">Bend Trunk Backward</span>
+            <span class="tag">Abdominal Curl</span>
+            <span class="tag">Shoulder Stand</span>
+          </div>
+          <li style="margin-top:15px;"><strong>Neck Exercises</strong></li>
+          <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 25px;">
+            <span class="tag">Head Bend (forward/sideward/backward)</span>
+            <span class="tag">Head Twist</span>
+            <span class="tag">Head Rotation</span>
+          </div>
       </div>
 
     </div>
