@@ -16,6 +16,11 @@
       --text-dark: #1a1a1a;
     }
 
+    /* Smooth scrolling for the whole page */
+    html {
+      scroll-behavior: smooth;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -202,6 +207,7 @@
       width: 100%;
     }
 
+    /* Text-decoration none so it behaves like a button link */
     .contact-icon {
       background: white;
       color: #333;
@@ -214,6 +220,7 @@
       font-size: 1.2rem;
       transition: transform 0.3s;
       cursor: pointer;
+      text-decoration: none;
     }
 
     .contact-icon:hover {
@@ -224,6 +231,7 @@
       position: relative;
       z-index: 1;
       max-width: 700px;
+      padding: 0 20px;
     }
 
     .hero h1 {
@@ -457,11 +465,9 @@
 
     .grid-wrapper {
       display: grid;
-      /* BAGUHIN ITO: Gawing 3 columns para gayahin ang layout sa image */
       grid-template-columns: repeat(2, 1fr);
       gap: 30px;
       margin-bottom: 50px;
-      /* Pinapanatili ang pantay na taas ng cards */
     }
 
 
@@ -534,6 +540,103 @@
       border: 2px solid var(--accent-gold);
     }
 
+    /* --- FOOTER STYLES --- */
+    .footer-section {
+      background: rgba(161, 161, 136, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-top: 1px solid var(--glass-border);
+      padding: 60px 0 20px 0;
+      margin-top: 80px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col h3 {
+      font-size: 1.5rem;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+      font-weight: 800;
+    }
+
+    .footer-col p {
+      color: #555;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .footer-col h4 {
+      font-size: 1.1rem;
+      color: black;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: #444;
+      font-weight: 500;
+      transition: color 0.3s, padding-left 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-gold);
+      padding-left: 5px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-btn {
+      width: 45px;
+      height: 45px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #333;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .social-btn:hover {
+      background: var(--accent-gold);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      padding-top: 25px;
+      text-align: center;
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    /* --- RESPONSIVE MEDIA QUERIES --- */
     @media (max-width: 1024px) {
       .grid-wrapper {
         grid-template-columns: repeat(2, 1fr);
@@ -541,38 +644,81 @@
     }
 
     @media (max-width: 768px) {
+      /* General Layout */
       .grid-wrapper {
         grid-template-columns: 1fr;
-        /* 1 column lang pag cellphone para hindi siksikan */
+      }
+      
+      /* Typography Updates for Mobile */
+      .hero h1 {
+        font-size: 2.5rem;
+        margin-top: 50px;
+        margin-bottom: 50px;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+        margin-bottom: 40px;
+      }
+      
+      .intro-text {
+        padding: 40px 20px;
+      }
+      
+      .intro-text p {
+        font-size: 1.1rem;
+        text-align: justify;
       }
 
+      /* Navbar Updates */
       .navbar {
         flex-direction: column;
-        gap: 15px;
-        padding: 20px;
+        gap: 20px;
+        padding: 20px 10px;
         position: relative;
         width: 95%;
         margin: 20px auto 0 auto;
       }
+      
+      .nav-links {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        text-align: center;
+      }
+      
+      .nav-links a {
+        padding-left: 0;
+        display: block;
+      }
 
+      /* Hero Section */
       .hero {
         height: auto;
-        padding-bottom: 50px;
+        min-height: 100vh;
+        padding-bottom: 60px;
       }
 
       .hero-content {
         padding-top: 50px;
       }
 
+      /* Cards and Images */
       .exercise-card {
         flex-direction: column;
         text-align: center;
-        padding: 30px;
+        padding: 25px;
       }
 
       .card-image {
         flex: none;
         width: 100%;
+        height: 250px; /* Fixed height for consistency */
+      }
+      
+      .card-image img {
+        height: 100%;
+        object-fit: cover;
       }
 
       .tags {
@@ -582,6 +728,20 @@
       .card-content {
         padding-right: 0;
         margin-top: 20px;
+      }
+      
+      .card-content h3 {
+        font-size: 1.5rem;
+      }
+
+      /* Footer */
+      .footer-content {
+        text-align: center;
+        gap: 30px;
+      }
+
+      .social-links {
+        justify-content: center;
       }
     }
   </style>
@@ -605,7 +765,7 @@
         <a href="#principles">Principle</a>
         <a href="#list">List of Exercises</a>
       </div>
-      <div class="contact-icon shadow">☏</div>
+      <a href="#contact" class="contact-icon shadow">☏</a>
     </nav>
 
     <div class="hero-content">
@@ -964,6 +1124,43 @@
 
     </div>
   </section>
+
+  <footer id="contact" class="footer-section animate-up">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col">
+          <h3>Simple Exercises</h3>
+          <p>Your comprehensive guide to physical fitness, health, and wellness. Start your journey to a better you today.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#types">Types of Exercise</a></li>
+            <li><a href="#phases">Training Phases</a></li>
+            <li><a href="#principles">Principles</a></li>
+            <li><a href="#list">Exercise List</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Stay Connected</h4>
+          <p style="margin-bottom: 15px;">Follow us for daily tips and updates.</p>
+          <div class="social-links">
+            <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Simple Exercises. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 
 </body>
 
