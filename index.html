@@ -328,7 +328,19 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.5s ease;
+
+      /* --- ADDED YELLOWISH TONE --- */
+      filter: sepia(50%) brightness(105%) contrast(105%);
+
+      /* Updated transition to include the filter change */
+      transition: transform 0.5s ease, filter 0.5s ease;
+    }
+
+    .gallery-wrapper:hover .gallery-img {
+      transform: scale(1.1);
+
+      /* Optional: When hovering, reveal the true colors slightly (interactive effect) */
+      filter: sepia(20%) brightness(110%);
     }
 
     .gallery-wrapper:hover .gallery-img {
@@ -404,13 +416,27 @@
       border-radius: 30px;
     }
 
+    /* --- UPDATED TYPES SECTION IMAGES --- */
     .card-image img {
       width: 100%;
       height: auto;
       border-radius: 30px;
       border: 4px solid var(--accent-gold);
       display: block;
-      transition: transform 0.5s;
+
+      /* Apply the warm yellowish filter */
+      filter: sepia(50%) brightness(105%) contrast(105%);
+
+      /* Smooth transition for both zoom and color change */
+      transition: transform 0.5s ease, filter 0.5s ease;
+    }
+
+    /* Hover effect for the card image */
+    .exercise-card:hover .card-image img {
+      transform: scale(1.05);
+
+      /* Slightly brighten and reveal color on hover */
+      filter: sepia(20%) brightness(115%);
     }
 
     .exercise-card:hover .card-image img {
@@ -540,6 +566,33 @@
       border: 2px solid var(--accent-gold);
     }
 
+    /* --- UPDATED IMAGES WITH YELLOWISH TONE --- */
+    .principle-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      border: 2px solid rgba(197, 179, 104, 0.4);
+      /* Gold border */
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+
+      /* THIS IS THE KEY CHANGE FOR THE YELLOW TONE */
+      /* Sepia adds the warm tone, brightness/contrast keeps it looking sharp */
+      filter: sepia(50%) brightness(105%) contrast(105%);
+
+      /* Ensure the filter transitions smoothly on hover */
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+
+    /* Hover effect */
+    .glass-card:hover .principle-img {
+      transform: scale(1.03);
+      /* Optional: Make it slightly brighter and less yellow on hover for effect */
+      filter: sepia(30%) brightness(115%) contrast(110%);
+    }
+
     /* --- FOOTER STYLES --- */
     .footer-section {
       background: rgba(161, 161, 136, 0.2);
@@ -644,27 +697,28 @@
     }
 
     @media (max-width: 768px) {
+
       /* General Layout */
       .grid-wrapper {
         grid-template-columns: 1fr;
       }
-      
+
       /* Typography Updates for Mobile */
       .hero h1 {
         font-size: 2.5rem;
         margin-top: 50px;
         margin-bottom: 50px;
       }
-      
+
       .section-title {
         font-size: 2rem;
         margin-bottom: 40px;
       }
-      
+
       .intro-text {
         padding: 40px 20px;
       }
-      
+
       .intro-text p {
         font-size: 1.1rem;
         text-align: justify;
@@ -679,14 +733,14 @@
         width: 95%;
         margin: 20px auto 0 auto;
       }
-      
+
       .nav-links {
         flex-direction: column;
         gap: 15px;
         width: 100%;
         text-align: center;
       }
-      
+
       .nav-links a {
         padding-left: 0;
         display: block;
@@ -713,9 +767,10 @@
       .card-image {
         flex: none;
         width: 100%;
-        height: 250px; /* Fixed height for consistency */
+        height: 250px;
+        /* Fixed height for consistency */
       }
-      
+
       .card-image img {
         height: 100%;
         object-fit: cover;
@@ -729,7 +784,7 @@
         padding-right: 0;
         margin-top: 20px;
       }
-      
+
       .card-content h3 {
         font-size: 1.5rem;
       }
@@ -910,30 +965,52 @@
   <section id="principles" class="container info-section">
     <h2 class="section-title animate-up">Principles of Training</h2>
     <div class="grid-wrapper">
+
       <div class="glass-card animate-up">
+        <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=600" alt="Specificity"
+          class="principle-img">
         <h3>Specificity</h3>
-        <p>Exercises must duplicate the movements and energy systems of the desired activity.</p>
+        <p>Exercises must duplicate the movements and energy systems of the desired activity. Train for what you want to
+          do.</p>
       </div>
+
       <div class="glass-card animate-up">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600" alt="Overload"
+          class="principle-img">
         <h3>Overload</h3>
-        <p>The body must be exercised beyond its accustomed level to adapt and grow stronger.</p>
+        <p>The body must be exercised beyond its accustomed level to adapt and grow stronger. Push your limits safely.
+        </p>
       </div>
+
       <div class="glass-card animate-up">
+        <img
+          src="https://ghost-cms.s3.ap-south-1.amazonaws.com/2023/10/How-To-Take-Gym-Progress-Photos_wellnesscorner.jpg"
+          alt="Progression" class="principle-img">
         <h3>Progression</h3>
-        <p>Intensity must increase gradually over time to avoid injury while ensuring improvement.</p>
+        <p>Intensity must increase gradually over time. Small steps lead to big changes without causing injury.</p>
       </div>
+
       <div class="glass-card animate-up">
+        <img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=600" alt="Reversibility"
+          class="principle-img">
         <h3>Reversibility</h3>
-        <p>Fitness is lost if exercise stops. "Use it or lose it."</p>
+        <p>Fitness is lost if exercise stops. The "Use it or lose it" rule applies to all fitness gains.</p>
       </div>
+
       <div class="glass-card animate-up">
-        <h3>Tedium</h3>
-        <p>Variations should be introduced to avoid boredom and prevent plateaus in progress.</p>
+        <img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=600" alt="Tedium"
+          class="principle-img">
+        <h3>Tedium (Variation)</h3>
+        <p>Variations in routines should be introduced to avoid boredom, prevent plateaus, and keep motivation high.</p>
       </div>
+
       <div class="glass-card animate-up">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=600" alt="Individualization"
+          class="principle-img">
         <h3>Individualization</h3>
-        <p>Programs must cater to unique individual needs, goals, and physiological differences.</p>
+        <p>Programs must cater to unique individual needs, genetics, fitness goals, and physiological differences.</p>
       </div>
+
     </div>
   </section>
 
@@ -1130,7 +1207,8 @@
       <div class="footer-content">
         <div class="footer-col">
           <h3>Simple Exercises</h3>
-          <p>Your comprehensive guide to physical fitness, health, and wellness. Start your journey to a better you today.</p>
+          <p>Your comprehensive guide to physical fitness, health, and wellness. Start your journey to a better you
+            today.</p>
         </div>
 
         <div class="footer-col">
