@@ -593,6 +593,83 @@
       filter: sepia(30%) brightness(115%) contrast(110%);
     }
 
+    /* --- NEW CSS FOR PHASE IMAGES (REPLACED GIFS) --- */
+    .phase-img {
+      width: 100%;
+      height: 180px;
+      /* Fixed height for consistency */
+      object-fit: cover;
+      /* Ensures the image fills the area nicely */
+      border-radius: 20px;
+      margin-bottom: 20px;
+      border: 2px solid rgba(197, 179, 104, 0.4);
+      /* Gold border */
+
+      /* THE YELLOWISH TONE FILTER */
+      filter: sepia(50%) brightness(105%) contrast(105%);
+
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+
+    /* Hover effect */
+    .glass-card:hover .phase-img {
+      transform: scale(1.03);
+      /* Brighten slightly on hover */
+      filter: sepia(20%) brightness(115%);
+    }
+
+    /* --- NEW CSS FOR MOVEMENT PATTERN CARDS --- */
+    .movement-grid {
+      display: grid;
+      /* UPDATED TO STRICTLY 4 COLUMNS */
+      grid-template-columns: repeat(4, 1fr); 
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .movement-card {
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 25px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease, background 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .movement-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .movement-img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin-bottom: 15px;
+      border: 2px solid rgba(197, 179, 104, 0.4);
+      /* Gold border */
+      filter: sepia(50%) brightness(105%) contrast(105%);
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+
+    .movement-card:hover .movement-img {
+      transform: scale(1.03);
+      filter: sepia(20%) brightness(115%);
+    }
+
+    .movement-card h3 {
+      font-size: 1.1rem;
+      color: #1a1a1a;
+      margin: 0;
+      font-weight: 700;
+    }
+
     /* --- FOOTER STYLES --- */
     .footer-section {
       background: rgba(161, 161, 136, 0.2);
@@ -694,12 +771,21 @@
       .grid-wrapper {
         grid-template-columns: repeat(2, 1fr);
       }
+      /* Movement grid goes to 2 columns on tablet */
+      .movement-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (max-width: 768px) {
 
       /* General Layout */
       .grid-wrapper {
+        grid-template-columns: 1fr;
+      }
+      
+      /* Movement grid goes to 1 column on mobile */
+      .movement-grid {
         grid-template-columns: 1fr;
       }
 
@@ -944,21 +1030,31 @@
   <section id="phases" class="container info-section">
     <h2 class="section-title animate-up">Phases of a Fitness Program</h2>
     <div class="grid-wrapper">
+
       <div class="glass-card animate-up">
+        <img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?q=80&w=600" alt="Warm up exercise"
+          class="phase-img">
         <h3>Warm-up</h3>
         <p>The initial phase (5-10 minutes) elevates body temperature and prepares muscles to prevent cramps and
           injuries. It leads to increased flexibility, blood flow, and improved performance.</p>
       </div>
+
       <div class="glass-card animate-up">
+        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=600" alt="Main workout"
+          class="phase-img">
         <h3>Exercise Proper</h3>
         <p>The phase where the individual performs the specific program to meet training objectives. This is the main
-          part of the workout focusing on your goals.</p>
+          part of the workout focusing on your goals (Aerobic or Anaerobic).</p>
       </div>
+
       <div class="glass-card animate-up">
+        <img src="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?q=80&w=600" alt="Cool down stretch"
+          class="phase-img">
         <h3>Cool Down</h3>
         <p>Gradual tapering off to prevent dizziness and blood pooling by keeping blood circulating for recovery. Helps
-          return heart rate to normal levels.</p>
+          return heart rate to normal levels safely.</p>
       </div>
+
     </div>
   </section>
 
@@ -1036,21 +1132,49 @@
     </div>
   </section>
 
-  <section class="container info-section">
+  <section class="container info-section" style="text-align: center;">
     <h2 class="section-title animate-up">Basic Movement Patterns</h2>
-    <div class="glass-card animate-up" style="text-align: center;">
-      <h3 style="border:none; margin-bottom:20px;">Fundamental Movements</h3>
-      <p style="max-width: 800px; margin: 0 auto; font-size: 1.2rem;">
+    <div class="glass-card animate-up" style="display: inline-block; text-align: center; padding: 40px; width:100%;">
+      <h3 style="border:none; margin-bottom:20px; font-size: 1.8rem;">Fundamental Movements</h3>
+      <p style="max-width: 800px; margin: 0 auto 30px auto; font-size: 1.2rem;">
         Sports and exercises are often based on these fundamental movements:
       </p>
-      <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 25px;">
-        <span class="tag">Squat</span>
-        <span class="tag">Lunge</span>
-        <span class="tag">Push</span>
-        <span class="tag">Pull</span>
-        <span class="tag">Twist</span>
-        <span class="tag">Bend</span>
-        <span class="tag">Gait (Walking/Running)</span>
+      <div class="movement-grid">
+        <div class="movement-card animate-up">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSODt-Mwb1w_H98lO256QzjOAKxq2Z5m-xKrw&s" alt="Squat"
+            class="movement-img">
+          <h3>Squat</h3>
+        </div>
+        <div class="movement-card animate-up">
+          <img src="https://images.unsplash.com/photo-1434682881908-b43d0467b798?q=80&w=600" alt="Lunge"
+            class="movement-img">
+          <h3>Lunge</h3>
+        </div>
+        <div class="movement-card animate-up">
+          <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600" alt="Push"
+            class="movement-img">
+          <h3>Push</h3>
+        </div>
+        <div class="movement-card animate-up">
+          <img src="https://images.unsplash.com/photo-1603287681836-b174ce5074c2?q=80&w=600" alt="Pull"
+            class="movement-img">
+          <h3>Pull</h3>
+        </div>
+        <div class="movement-card animate-up">
+          <img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=600" alt="Twist"
+            class="movement-img">
+          <h3>Twist</h3>
+        </div>
+        <div class="movement-card animate-up">
+          <img src="https://www.yogajournal.com/wp-content/uploads/2021/11/Uttanasana-Pose_Andrew-Clark_2400x1350.jpeg" alt="Bend"
+            class="movement-img">
+          <h3>Bend</h3>
+        </div>
+        <div class="movement-card animate-up">
+          <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=600" alt="Gait"
+            class="movement-img">
+          <h3>Gait (Walking/Running)</h3>
+        </div>
       </div>
     </div>
   </section>
