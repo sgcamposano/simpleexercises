@@ -16,7 +16,6 @@
       --text-dark: #1a1a1a;
     }
 
-    /* Smooth scrolling for the whole page */
     html {
       scroll-behavior: smooth;
     }
@@ -151,7 +150,6 @@
       background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2));
     }
 
-    /* Navbar */
     .navbar {
       position: absolute;
       top: 40px;
@@ -207,7 +205,6 @@
       width: 100%;
     }
 
-    /* Text-decoration none so it behaves like a button link */
     .contact-icon {
       background: white;
       color: #333;
@@ -329,17 +326,14 @@
       object-fit: cover;
       display: block;
 
-      /* --- ADDED YELLOWISH TONE --- */
       filter: sepia(50%) brightness(105%) contrast(105%);
 
-      /* Updated transition to include the filter change */
       transition: transform 0.5s ease, filter 0.5s ease;
     }
 
     .gallery-wrapper:hover .gallery-img {
       transform: scale(1.1);
 
-      /* Optional: When hovering, reveal the true colors slightly (interactive effect) */
       filter: sepia(20%) brightness(110%);
     }
 
@@ -416,7 +410,6 @@
       border-radius: 30px;
     }
 
-    /* --- UPDATED TYPES SECTION IMAGES --- */
     .card-image img {
       width: 100%;
       height: auto;
@@ -424,18 +417,14 @@
       border: 4px solid var(--accent-gold);
       display: block;
 
-      /* Apply the warm yellowish filter */
       filter: sepia(50%) brightness(105%) contrast(105%);
 
-      /* Smooth transition for both zoom and color change */
       transition: transform 0.5s ease, filter 0.5s ease;
     }
 
-    /* Hover effect for the card image */
     .exercise-card:hover .card-image img {
       transform: scale(1.05);
 
-      /* Slightly brighten and reveal color on hover */
       filter: sepia(20%) brightness(115%);
     }
 
@@ -566,7 +555,6 @@
       border: 2px solid var(--accent-gold);
     }
 
-    /* --- UPDATED IMAGES WITH YELLOWISH TONE --- */
     .principle-img {
       width: 100%;
       height: 200px;
@@ -578,50 +566,37 @@
       /* Gold border */
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 
-      /* THIS IS THE KEY CHANGE FOR THE YELLOW TONE */
-      /* Sepia adds the warm tone, brightness/contrast keeps it looking sharp */
       filter: sepia(50%) brightness(105%) contrast(105%);
 
-      /* Ensure the filter transitions smoothly on hover */
       transition: transform 0.4s ease, filter 0.4s ease;
     }
 
     /* Hover effect */
     .glass-card:hover .principle-img {
       transform: scale(1.03);
-      /* Optional: Make it slightly brighter and less yellow on hover for effect */
       filter: sepia(30%) brightness(115%) contrast(110%);
     }
 
-    /* --- NEW CSS FOR PHASE IMAGES (REPLACED GIFS) --- */
     .phase-img {
       width: 100%;
       height: 180px;
-      /* Fixed height for consistency */
       object-fit: cover;
-      /* Ensures the image fills the area nicely */
       border-radius: 20px;
       margin-bottom: 20px;
       border: 2px solid rgba(197, 179, 104, 0.4);
-      /* Gold border */
 
-      /* THE YELLOWISH TONE FILTER */
       filter: sepia(50%) brightness(105%) contrast(105%);
 
       transition: transform 0.4s ease, filter 0.4s ease;
     }
 
-    /* Hover effect */
     .glass-card:hover .phase-img {
       transform: scale(1.03);
-      /* Brighten slightly on hover */
       filter: sepia(20%) brightness(115%);
     }
 
-    /* --- NEW CSS FOR MOVEMENT PATTERN CARDS --- */
     .movement-grid {
       display: grid;
-      /* UPDATED TO STRICTLY 4 COLUMNS */
       grid-template-columns: repeat(4, 1fr); 
       gap: 25px;
       margin-top: 30px;
@@ -670,7 +645,6 @@
       font-weight: 700;
     }
 
-    /* --- FOOTER STYLES --- */
     .footer-section {
       background: rgba(161, 161, 136, 0.2);
       backdrop-filter: blur(10px);
@@ -766,12 +740,10 @@
       font-size: 0.9rem;
     }
 
-    /* --- RESPONSIVE MEDIA QUERIES --- */
     @media (max-width: 1024px) {
       .grid-wrapper {
         grid-template-columns: repeat(2, 1fr);
       }
-      /* Movement grid goes to 2 columns on tablet */
       .movement-grid {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -779,17 +751,14 @@
 
     @media (max-width: 768px) {
 
-      /* General Layout */
       .grid-wrapper {
         grid-template-columns: 1fr;
       }
       
-      /* Movement grid goes to 1 column on mobile */
       .movement-grid {
         grid-template-columns: 1fr;
       }
-
-      /* Typography Updates for Mobile */
+      
       .hero h1 {
         font-size: 2.5rem;
         margin-top: 50px;
@@ -810,7 +779,6 @@
         text-align: justify;
       }
 
-      /* Navbar Updates */
       .navbar {
         flex-direction: column;
         gap: 20px;
@@ -832,7 +800,6 @@
         display: block;
       }
 
-      /* Hero Section */
       .hero {
         height: auto;
         min-height: 100vh;
@@ -843,7 +810,6 @@
         padding-top: 50px;
       }
 
-      /* Cards and Images */
       .exercise-card {
         flex-direction: column;
         text-align: center;
@@ -854,7 +820,6 @@
         flex: none;
         width: 100%;
         height: 250px;
-        /* Fixed height for consistency */
       }
 
       .card-image img {
@@ -875,7 +840,6 @@
         font-size: 1.5rem;
       }
 
-      /* Footer */
       .footer-content {
         text-align: center;
         gap: 30px;
